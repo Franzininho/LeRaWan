@@ -1,6 +1,9 @@
 # LeRaWan
 Botão de pânico para idosos com detecçcão de queda
 
+## Código
+Adicionar a pasta comum como biblioteca do arduino já que essa biblioteca armazena informações comuns necessárias tanto para o receptor quanto para o emissor.
+
 ## Especificações
 
 Projeto: LeRaWan
