@@ -28,7 +28,7 @@ void recebeDados(const uint8_t *senderMac, const uint8_t *incomingData, int len)
   Serial.print("caiu: ");
   Serial.println(dados.fall);
 
-  tone(buzzer, 1245, 5000);
+  tone(buzzer, 1245, 1500);
 }
 
 void printMac() {

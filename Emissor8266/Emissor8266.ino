@@ -18,6 +18,7 @@ void setup() {
 
   esp_now_set_self_role(ESP_NOW_ROLE_CONTROLLER);
   esp_now_add_peer(macReceptor, ESP_NOW_ROLE_SLAVE, WIFI_CHANNEL, NULL, 0);
+  esp_now_add_peer(macExtensor, ESP_NOW_ROLE_SLAVE, WIFI_CHANNEL, NULL, 0);
 
   digitalWrite(BUILTIN_LED,HIGH);
   sendData();
