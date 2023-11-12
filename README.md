@@ -37,5 +37,5 @@ Circuitos para a montagem do emissor e do receptor. Para a placa que atua como r
 
 **Receptor**
 
-<img src="./imagens/receptor.jpg" width="300px"/>
+<img src="./imagens/receptor.jpg" width="600px"/>
 
