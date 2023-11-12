@@ -23,7 +23,7 @@ void espNowFailed(int led){
 }
 
 void printMac() {
-  Serial.printf("Mac: %s, ", WiFi.macAddress().c_str());
+  Serial.printf("Mac: %s \n", WiFi.macAddress().c_str());
 }
 
 
