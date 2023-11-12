@@ -30,10 +30,12 @@ Depois de atualizar os dados presentes na biblioteca com os dados referente ao s
 Circuitos para a montagem do emissor e do receptor. Para a placa que atua como repetidor de sinal, não é necessário nenhum tipo de circuito.
 
 **Emissor**
-<img src="./imagens/emissor.jpg" width="400px"/>
+
+<img src="./imagens/emissor.jpg" width="300px"/>
 
 *Obs: É preciso conectar também uma bateria de 3.7V nos pads de bateria que se encontram no bottom da placa*
 
 **Receptor**
-<img src="./imagens/receptor.jpg" width="400px"/>
+
+<img src="./imagens/receptor.jpg" width="300px"/>
 
