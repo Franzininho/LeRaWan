@@ -12,12 +12,17 @@ Info {
 
 
 void espNowFailed(int led){
-pinMode(led,OUTPUT);
-while(true){
-    digitalWrite(led, HIGH);
-    delay(100);
-    digitalWrite(led, LOW);
-    delay(100);
-  }
+  pinMode(led,OUTPUT);
+  while(true){
+      digitalWrite(led, HIGH);
+      delay(100);
+      digitalWrite(led, LOW);
+      delay(100);
+    }
 }
+
+void printMac() {
+  Serial.printf("Mac: %s, ", WiFi.macAddress().c_str());
+}
+
 

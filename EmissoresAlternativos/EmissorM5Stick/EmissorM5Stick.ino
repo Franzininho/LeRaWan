@@ -1,6 +1,6 @@
 #include <WiFi.h>
 #include <esp_now.h>
-#include <comum.h>
+#include <lerawan_comum.h>
 #include <M5StickC.h>
 
 #define btn GPIO_NUM_37
@@ -8,12 +8,12 @@
 Info dados;
 
 esp_now_peer_info_t infoReceptor;
+// esp_now_peer_info_t infoRepetidor; // descomentar se usar repetidor
 
 
 void setup() {
   M5.begin();
-  Serial.begin(9600);
-  pinMode(M5_LED, OUTPUT);
+  Serial.begin(115200);
   pinMode(btn, INPUT);
 
   WiFi.mode(WIFI_STA);
@@ -24,13 +24,12 @@ void setup() {
   }
 
   memcpy(infoReceptor.peer_addr, macReceptor, 6);
+  //memcpy(infoRepetidor.peer_addr, macReceptor, 6); // descomentar se usar repetidor
 
   esp_now_add_peer(&infoReceptor);
+  //esp_now_add_peer(&infoRepetidor); // descomentar se usar repetidor
 
-  digitalWrite(M5_LED, HIGH);
   sendData();
-  delay(200);
-  digitalWrite(M5_LED, LOW);
   esp_sleep_enable_ext0_wakeup(btn, 1);
   M5.Axp.DeepSleep();
 }
@@ -47,8 +46,4 @@ void sendData() {
     delay(200);
   } while (resultado != 0);
   dados.button = false;
-}
-
-void printMac() {
-  Serial.printf("Mac: %s, ", WiFi.macAddress().c_str());
 }

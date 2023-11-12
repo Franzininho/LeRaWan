@@ -1,37 +1,46 @@
 #include <WiFi.h>
 #include <esp_now.h>
-#include <comum.h>
+#include <lerawan_comum.h>
 
-#define buzzer 15
+#define buzzer 3
+#define led 43
+#define ledError 33
 
-void recebeDados(const uint8_t *senderMac, const uint8_t *incomingData, int len);
 Info dados;
 
-void setup() {
+void recebeDados(const uint8_t *senderMac, const uint8_t *incomingData, int len);
+
+void setup()
+{
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
+
   pinMode(buzzer, OUTPUT);
-  if (esp_now_init() != 0) {
-    espNowFailed(33);
+  pinMode(led, OUTPUT);
+
+  if (esp_now_init() != 0)
+  {
+    espNowFailed(ledError);
   }
+
   esp_now_register_recv_cb(recebeDados);
-  delay(400);
 }
 
-void loop() {
+void loop()
+{
 }
 
-void recebeDados(const uint8_t *senderMac, const uint8_t *incomingData, int len) {
+void recebeDados(const uint8_t *senderMac, const uint8_t *incomingData, int len)
+{
   memcpy(&dados, incomingData, sizeof(dados));
   Serial.print("botao: ");
   Serial.println(dados.button);
-  Serial.print("caiu: ");
-  Serial.println(dados.fall);
+  // Serial.print("caiu: ");
+  // Serial.println(dados.fall);
 
-  tone(buzzer, 1245, 1500);
-}
-
-void printMac() {
-  Serial.print("Mac: ");
-  Serial.println(WiFi.macAddress());
+  digitalWrite(led, HIGH);
+  tone(buzzer, 1245);
+  delay(1500);
+  digitalWrite(led, LOW);
+  noTone(buzzer);
 }
