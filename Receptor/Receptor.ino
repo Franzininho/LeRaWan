@@ -10,28 +10,24 @@ Info dados;
 
 void recebeDados(const uint8_t *senderMac, const uint8_t *incomingData, int len);
 
-void setup()
-{
+void setup() {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
 
   pinMode(buzzer, OUTPUT);
   pinMode(led, OUTPUT);
 
-  if (esp_now_init() != 0)
-  {
+  if (esp_now_init() != 0) {
     espNowFailed(ledError);
   }
 
   esp_now_register_recv_cb(recebeDados);
 }
 
-void loop()
-{
+void loop() {
 }
 
-void recebeDados(const uint8_t *senderMac, const uint8_t *incomingData, int len)
-{
+void recebeDados(const uint8_t *senderMac, const uint8_t *incomingData, int len) {
   memcpy(&dados, incomingData, sizeof(dados));
   Serial.print("botao: ");
   Serial.println(dados.button);

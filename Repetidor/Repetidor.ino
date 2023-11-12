@@ -28,11 +28,10 @@ void loop() {
 
 void repassaDados(const uint8_t *senderMac, const uint8_t *incomingData, int len) {
   memcpy(&dados, incomingData, sizeof(dados));
-   int resultado;
+  int resultado;
   do {
     dados.button = true;
     resultado = esp_now_send(macReceptor, (uint8_t *)&dados, sizeof(dados));
     delay(200);
   } while (resultado != 0);
 }
-
